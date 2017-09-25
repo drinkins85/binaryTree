@@ -51,8 +51,18 @@ trForm.addEventListener('submit', function (e) {
             break
         }
     }
-
 });
+
+let btnMin = document.getElementById('findMin');
+btnMin.addEventListener('click', function () {
+   output.innerHTML = tree.findMin();
+});
+
+let btnMax = document.getElementById('findMax');
+btnMax.addEventListener('click', function () {
+    output.innerHTML = tree.findMax();
+});
+
 
 
 

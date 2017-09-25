@@ -132,7 +132,29 @@ class BSTree {
        }
         this.root = delNode(this.root, data);
     }
-    
+
+    findMin() {
+        if (this.root === null){
+            return null;
+        }
+        let current = this.root;
+        while (current.leftNode !== null) {
+            current = current.leftNode;
+        }
+        return current.data;
+    }
+
+    findMax() {
+        if (this.root === null){
+            return null;
+        }
+        let current = this.root;
+        while (current.rightNode !== null) {
+            current = current.rightNode;
+        }
+        return current.data;
+    }
+
     render(){
         const renderto = document.getElementById('render');
         renderto.innerHTML = '';
