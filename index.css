@@ -1,0 +1,80 @@
+.panel {
+    padding: 20px;
+    background-color: lightgrey;
+}
+
+.main{
+    text-align: center;
+    width: 100%;
+}
+
+.node {
+    display: block;
+}
+
+.vertical-line {
+    background-image: url("bg-center.png");
+    background-position: top center;
+    background-repeat: repeat-y;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.tree_left{
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.tree_right{
+    float: right;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.circle {
+    background-color: orange;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: inline-block;
+    box-sizing: border-box;
+    background-image: none;
+    padding-top: 15px;
+}
+
+
+.node-line_left {
+    margin: 0;
+    padding: 0;
+    border-top: solid 1px black;
+    width: 50%;
+    margin-left: 50%;
+    display: block;
+}
+
+.node-line_right {
+    margin: 0;
+    padding: 0;
+    border-top: solid 1px black;
+    width: 50%;
+    display: block;
+}
+
+form {
+    margin-right: 20px;
+    display: inline-block;
+}
+
+form input{
+    width: 80px;
+}
+
+#output {
+    background-color: black;
+    color: lightgreen;
+    font-size: 1.2em;
+    padding: 10px;
+
+}
+

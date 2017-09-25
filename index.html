@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>Binary Tree</title>
+</head>
+<body>
+
+<h1>Бинарное дерево</h1>
+
+<div class="panel">
+
+
+    <form id="add">
+        <input type="number" required name="data" ><button type="submit">Добавить</button>
+    </form>
+
+    <form id="delete">
+        <input type="number" required name="data" ><button type="submit">Удалить</button>
+    </form>
+
+    <form id="traverse">
+        <select name="type" >
+            <option value="1">Обход в прямом порядке</option>
+            <option value="2">Симметричный обход</option>
+            <option value="3">Обход в обратном порядке</option>
+            <option value="4">Обход в ширину</option>
+        </select>
+        <button type="submit">OK</button>
+    </form>
+
+
+</div>
+
+<div id="output"></div>
+
+<div>
+    <div class="main" id="render"></div>
+    <div style="clear: both"></div>
+</div>
+
+<script src="BinaryTree.js"></script>
+<script src="index.js"></script>
+
+
+
+</body>
+</html>
