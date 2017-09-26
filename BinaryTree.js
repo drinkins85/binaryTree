@@ -72,19 +72,17 @@ class BSTree {
 
     // обход в ширину
     traverseLevels(){
-        if (this.root === null) {
+        if (this.root === null) { //пусто
             return null;
         } else {
             const result = [];
             function traverseDephFirst(node) {
-
-                const childqueue = [];
-                childqueue.push(node);
-
+                const childqueue = []; // очередь для потомков
+                childqueue.push(node); // добавляем узел в очередь
                 while (childqueue.length > 0) {
-                    node = childqueue.shift();
+                    node = childqueue.shift(); // извлекаем узел
                     result.push(node.data);
-                    if (node.leftNode !== null) {
+                    if (node.leftNode !== null) { //если есто потомки, добавляем в очередь
                         childqueue.push(node.leftNode);
                     }
                     if (node.rightNode !== null) {
@@ -99,34 +97,35 @@ class BSTree {
     }
 
     del(data) {
-
        function delNode(node, data) {
-           if (node === null){
+           if (node === null){ // пусто
                return null;
            }
-           if (data === node.data){
-               if (node.leftNode === null && node.rightNode === null){
-                   return null;
+           if (data === node.data){ // нашли нужный узел
+               if (node.leftNode === null && node.rightNode === null){ // если нет потомков
+                   return null; // удаляем вершину
                }
-               if(node.leftNode === null){
-                   return node.rightNode;
+               if(node.leftNode === null){ // если нет левого потомка
+                   return node.rightNode; // идем по правой ветке
                }
-               if (node.rightNode === null){
-                   return node.leftNode;
+               if (node.rightNode === null){ // если нет правого потомка
+                   return node.leftNode; // идем по левой ветке
                }
-               let tempNode = node.rightNode;
-               while (tempNode.leftNode !== null){
-                    tempNode = tempNode.leftNode;
+               // есть два потомка
+               let tempNode = node.leftNode; //спускаемся в левую вершину
+               while (tempNode.rightNode !== null){ // спускаемся до крайней правой вершины
+                    tempNode = tempNode.rightNode;
                }
-               node.data = tempNode.data;
-               node.rightNode = delNode(node.rightNode, tempNode.data);
+
+               node.data = tempNode.data; // вставляем значение вместо удаленной вершины
+               node.leftNode = delNode(node.leftNode, tempNode.data); // идем по левой ветке
                return node;
 
-           }  else if (data < node.data) {
-               node.leftNode = delNode(node.leftNode, data);
+           }  else if (data < node.data) { // если значение меньше текущего
+               node.leftNode = delNode(node.leftNode, data); // идем по левой ветке
                return node;
            } else {
-               node.rightNode = delNode(node.rightNode, data);
+               node.rightNode = delNode(node.rightNode, data); // иначе идем по правой
                return node;
            }
        }
@@ -134,53 +133,50 @@ class BSTree {
     }
 
     findMin() {
-        if (this.root === null){
+        if (this.root === null){ // пусто
             return null;
         }
         let current = this.root;
-        while (current.leftNode !== null) {
+        while (current.leftNode !== null) { //находим крайнюю левую вершину
             current = current.leftNode;
         }
         return current.data;
     }
 
     findMax() {
-        if (this.root === null){
+        if (this.root === null){ // пусто
             return null;
         }
         let current = this.root;
-        while (current.rightNode !== null) {
+        while (current.rightNode !== null) { // находим крайнюю правую вершину
             current = current.rightNode;
         }
         return current.data;
     }
 
     render(elemid){
-        const renderto = document.getElementById(elemid);
+        const renderto = document.getElementById(elemid); // контейнер
         renderto.innerHTML = '';
-
-        if (this.root === null) {
+        if (this.root === null) { // пусто
             return null;
         } else {
-            function traverseDephFirst(node) {
+            function traverseDephFirst(node) { // обходим в ширину
                 const childqueue = [];
                 childqueue.push(node);
-                //let level = 0;
                 let key = 0;
                 while (childqueue.length > 0) {
                     key++;
                     node = childqueue.shift();
                     let elem = document.createElement('div');
-                    elem.classList.add('node_'+key);
+                    elem.classList.add('node_'+key); // добавляем ключ для контейнера
                     elem.classList.add('node');
-
                     let dataContainer = document.createElement('div');
                     dataContainer.classList.add('vertical-line');
                     let data = document.createElement('span');
                     let line = document.createElement('span');
 
-                    if (node.type && key > 1){
-                        elem.classList.add('tree_'+node.type);
+                    if (node.type && key > 1){ // если не корень
+                        elem.classList.add('tree_'+node.type); // классы для левой/правой ветви
                         line.classList.add('node-line_'+node.type);
                     }
 
@@ -199,13 +195,13 @@ class BSTree {
 
                     }
 
-                    delete node.parent;
+                    delete node.parent; // удаляем временные свойства
                     delete node.type;
 
                     if (node.leftNode !== null) {
-                        node.leftNode.parent = key;
-                        node.leftNode.type = 'left';
-                        childqueue.push(node.leftNode);
+                        node.leftNode.parent = key; // создаем временное свойство для привязки родителя
+                        node.leftNode.type = 'left'; // создаем временное свойство для указания ветви
+                        childqueue.push(node.leftNode); // добавляем узел в очередь
                     }
                     if (node.rightNode !== null) {
                         node.rightNode.parent = key;
