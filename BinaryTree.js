@@ -155,8 +155,8 @@ class BSTree {
         return current.data;
     }
 
-    render(){
-        const renderto = document.getElementById('render');
+    render(elemid){
+        const renderto = document.getElementById(elemid);
         renderto.innerHTML = '';
 
         if (this.root === null) {
@@ -223,36 +223,21 @@ class BSTree {
 
 
 let tree = new BSTree();
+
 /*
+
+// Add
+
 tree.add(8);
 tree.add(4);
-tree.add(2);
-tree.add(3);
-tree.add(10);
-tree.add(6);
-tree.add(7);
-tree.add(5);
-tree.add(9);
-tree.add(22);
-tree.add(30);
-tree.add(15);
-tree.add(1);
-tree.add(12);
 
-tree.add(15);
+// delete
+tree.del(8);
 
+console.log(tree.traverse({order:'pre'})); // обход в прямом порядке
+console.log(tree.traverse({order:'in'})); // симметричный обход
+console.log(tree.traverse({order:'post'})); // обход в обратном порядке
+
+// render
+tree.render();
 */
-
-//tree.del(30);
-//tree.del(8);
-//tree.del(8);
-
-//console.log(tree.traverse({order:'pre'})); // обход в прямом порядке
-//console.log(tree.traverse({order:'in'})); // симметричный обход
-//console.log(tree.traverse({order:'post'})); // обход в обратном порядке
-
-//tree.render();
-
-
-
-//tree.render();

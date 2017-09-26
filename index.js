@@ -7,7 +7,7 @@ addForm.addEventListener('submit', function (e) {
     let data = dataInp.value;
     if (data !== ''){
         tree.add(+data);
-        tree.render();
+        tree.render('render');
         dataInp.value = '';
         dataInp.focus();
     }
@@ -20,7 +20,7 @@ delForm.addEventListener('submit', function (e) {
     let data = dataInp.value;
     if (data !== ''){
         tree.del(+data);
-        tree.render();
+        tree.render('render');
         dataInp.value = '';
         dataInp.focus();
     }
@@ -55,12 +55,12 @@ trForm.addEventListener('submit', function (e) {
 
 let btnMin = document.getElementById('findMin');
 btnMin.addEventListener('click', function () {
-   output.innerHTML = tree.findMin();
+output.innerHTML = tree.findMin();
 });
 
 let btnMax = document.getElementById('findMax');
 btnMax.addEventListener('click', function () {
-    output.innerHTML = tree.findMax();
+output.innerHTML = tree.findMax();
 });
 
 
